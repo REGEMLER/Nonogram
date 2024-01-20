@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     outline: none;
@@ -6,10 +6,10 @@
 }
 
 :root {
-    --LightText : white;
-    --DarkText : black; 
-    --DarkBG : #232529; 
-    --LightkBG : #7e86b4;
+    --LightBG : #b1b1b1; 
+    --DarkBG : #303657;
+    --DarkBTN : #325730;
+    --LightBTN : #1a991c;
 }
 
 body {
@@ -18,19 +18,143 @@ body {
     overflow-x: hidden;
 }
 
-ul,ol,li{
+ul,ol,li {
     list-style: none;
 }
 
-.wrapper{
+.wrapper {
     width: 100vw;
     min-height: 100vh;
     margin: 0 auto;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     position: relative;
-    background-color: var(--LightkBG);
+}
+
+.bg_light {
+    background-color: var(--LightBG);
+}
+
+.bg_dark {
+    background-color: var(--DarkBG);
+}
+
+.text_light {
+    color: black;
+}
+
+.text_dark {
+    color: white;
+}
+
+.btn_light {
+    background-color: var(--LightBTN);
+}
+
+.btn_dark {
+    background-color: var(--DarkBTN);
+}
+
+.theme {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.theme img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.title {
+    padding: 1rem;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 1rem;
+    padding: 1rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+.game {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 2rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.button {
+    width: 150px;
+    height: 50px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all linear 0.3s;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+.field {
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    border: 1px solid gray;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.row_five {
+    border-bottom: 3px solid gray;
+}
+
+.row_helper {
+    border-bottom: 3px solid black;
+}
+
+.cell_empty {
+    border: none;
+    background-color: transparent;
+}
+
+.cell_helper {
+    border-right: 3px solid black;
+}
+
+.cell_five {
+    border-right: 3px solid gray;
 }
