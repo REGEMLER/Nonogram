@@ -14,6 +14,10 @@ function createField(numberHelpers, size) {
         for (let j = 1; j <= size; j++) {
             const cell = document.createElement("DIV");
             cell.classList.add("cell");
+            if (i>numberHelpers && j>numberHelpers) {
+                cell.id = `${i - numberHelpers}-${j - numberHelpers}`;
+                cell.textContent = cell.id;
+            }
 
             if (j === numberHelpers) {
                 cell.classList.add("cell_helper");
