@@ -73,13 +73,15 @@ ul,ol,li {
 }
 
 .title {
-    padding: 1rem;
+    max-width: 90%;
+    margin: 0 auto;
     text-align: center;
 }
 
 .subtitle {
+    max-width: 90%;
     font-size: 1rem;
-    padding: 1rem;
+    margin: 1rem auto;
     font-weight: 400;
     text-align: center;
 }
@@ -157,4 +159,33 @@ ul,ol,li {
 
 .cell_five {
     border-right: 3px solid gray;
+}
+
+
+@media screen and (max-width: 850px) {
+    .cell {
+        width: 30px;
+        height: 30px;
+    }
+    .button {
+        width: 130px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .cell {
+        width: 20px;
+        height: 20px;
+    }
+    .button {
+        width: 100px;
+        height: 40px;
+        font-size: 0.85rem;
+    }
+    .theme {
+        top: 20px;
+        right: 20px;
+    }
 }
