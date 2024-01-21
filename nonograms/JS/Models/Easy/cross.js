@@ -1,47 +1,4 @@
-export const plusModelHelper = [
-    {
-        id: "3-4h",
-        text: 1
-    },
-    {
-        id: "3-5h",
-        text: 1
-    },
-    {
-        id: "3-6h",
-        text: 5
-    },
-    {
-        id: "3-7h",
-        text: 1
-    },
-    {
-        id: "3-8h",
-        text: 1
-    },
-    {
-        id: "4-3h",
-        text: 1
-    },
-    {
-        id: "5-3h",
-        text: 1
-    },
-    {
-        id: "6-3h",
-        text: 5
-    },
-    {
-        id: "7-3h",
-        text: 1
-    },
-    {
-        id: "8-3h",
-        text: 1
-    },
-];
-
-export const plusModel = [
+export const crossModel = [
     {
         id: "1-1",
         isFull: false,
@@ -49,7 +6,7 @@ export const plusModel = [
     },
     {
         id: "1-2",
-        isFull: false,
+        isFull: true,
         isGuesed: false
     },
     {
@@ -59,7 +16,7 @@ export const plusModel = [
     },
     {
         id: "1-4",
-        isFull: false,
+        isFull: true,
         isGuesed: false
     },
     {
@@ -69,27 +26,27 @@ export const plusModel = [
     },
     {
         id: "2-1",
-        isFull: false,
-        isGuesed: false
-    },
-    {
-        id: "2-2",
-        isFull: false,
-        isGuesed: false
-    },
-    {
-        id: "2-3",
         isFull: true,
         isGuesed: false
     },
     {
-        id: "2-4",
+        id: "2-2",
+        isFull: true,
+        isGuesed: false
+    },
+    {
+        id: "2-3",
         isFull: false,
         isGuesed: false
     },
     {
+        id: "2-4",
+        isFull: true,
+        isGuesed: false
+    },
+    {
         id: "2-5",
-        isFull: false,
+        isFull: true,
         isGuesed: false
     },
     {
@@ -99,17 +56,17 @@ export const plusModel = [
     },
     {
         id: "3-2",
-        isFull: true,
+        isFull: false,
         isGuesed: false
     },
     {
         id: "3-3",
-        isFull: true,
+        isFull: false,
         isGuesed: false
     },
     {
         id: "3-4",
-        isFull: true,
+        isFull: false,
         isGuesed: false
     },
     {
@@ -119,27 +76,27 @@ export const plusModel = [
     },
     {
         id: "4-1",
-        isFull: false,
-        isGuesed: false
-    },
-    {
-        id: "4-2",
-        isFull: false,
-        isGuesed: false
-    },
-    {
-        id: "4-3",
         isFull: true,
         isGuesed: false
     },
     {
-        id: "4-4",
+        id: "4-2",
+        isFull: true,
+        isGuesed: false
+    },
+    {
+        id: "4-3",
         isFull: false,
         isGuesed: false
     },
     {
+        id: "4-4",
+        isFull: true,
+        isGuesed: false
+    },
+    {
         id: "4-5",
-        isFull: false,
+        isFull: true,
         isGuesed: false
     },
     {
@@ -149,7 +106,7 @@ export const plusModel = [
     },
     {
         id: "5-2",
-        isFull: false,
+        isFull: true,
         isGuesed: false
     },
     {
@@ -159,7 +116,7 @@ export const plusModel = [
     },
     {
         id: "5-4",
-        isFull: false,
+        isFull: true,
         isGuesed: false
     },
     {
@@ -168,3 +125,70 @@ export const plusModel = [
         isGuesed: false
     },
 ]
+
+export const crossModelHelper = [
+    {
+        id: "2-5h",
+        text: 2
+    },
+    {
+        id: "2-6h",
+        text: 1
+    },
+    {
+        id: "2-7h",
+        text: 2
+    },
+    {
+        id: "3-4h",
+        text: 3
+    },
+    {
+        id: "3-5h",
+        text: 2
+    },
+    {
+        id: "3-6h",
+        text: 1
+    },
+    {
+        id: "3-7h",
+        text: 2
+    },
+    {
+        id: "3-8h",
+        text: 3
+    },
+    {
+        id: "4-3h",
+        text: 3
+    },
+    {
+        id: "5-3h",
+        text: 2
+    },
+    {
+        id: "6-3h",
+        text: 1
+    },
+    {
+        id: "7-3h",
+        text: 2
+    },
+    {
+        id: "8-3h",
+        text: 3
+    },
+    {
+        id: "5-2h",
+        text: 2
+    },
+    {
+        id: "6-2h",
+        text: 1
+    },
+    {
+        id: "7-2h",
+        text: 2
+    },
+];

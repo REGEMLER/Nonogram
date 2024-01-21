@@ -1,5 +1,11 @@
-import {plusModelHelper} from "./models.js";
-import {plusModel} from "./models.js";
+import {towerModelHelper, towerModel} from "./Models/Easy/tower.js";
+import {crossModelHelper, crossModel} from "./Models/Easy/cross.js";
+import {skullModelHelper, skullModel} from "./Models/Easy/skull.js";
+import {batModelHelper, batModel} from "./Models/Easy/bat.js";
+import {treeModelHelper, treeModel} from "./Models/Easy/tree.js";
+
+const model = [...treeModel];
+const modelHelper = [...treeModelHelper];
 
 function createField(numberHelpers, size) {
     const field = document.querySelector(".field");
@@ -24,7 +30,7 @@ function createField(numberHelpers, size) {
             } else {
                 cell.id = `${i}-${j}h`;
                 cell.dataset.isCell = false;
-                const id = plusModelHelper.find(item => item.id === cell.id);
+                const id = modelHelper.find(item => item.id === cell.id);
                 if(id) {
                     cell.textContent = id.text;
                 }
@@ -81,8 +87,8 @@ function onClick(event) {
         event.target.classList.add("cell_click");
     };
 
-    checkGuesed(plusModel, [...document.querySelectorAll("[data-is-cell='true']")]);
-    if(checkWin(plusModel)) console.log("Win")
+    checkGuesed(model, [...document.querySelectorAll("[data-is-cell='true']")]);
+    if(checkWin(model)) console.log("Win")
 }
 
 function onContextMenu(event) {
@@ -95,8 +101,8 @@ function onContextMenu(event) {
         event.target.textContent = "X";
     }
 
-    checkGuesed(plusModel, [...document.querySelectorAll("[data-is-cell='true']")]);
-    if(checkWin(plusModel)) console.log("Win")
+    checkGuesed(model, [...document.querySelectorAll("[data-is-cell='true']")]);
+    if(checkWin(model)) console.log("Win")
 }
 
 document.body.addEventListener("click", onClick);
