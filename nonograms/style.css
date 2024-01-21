@@ -165,6 +165,10 @@ ul,ol,li {
     border-right: 3px solid gray;
 }
 
+.cell_click {
+    background-color: black;
+}
+
 
 @media screen and (max-width: 850px) {
     .cell {

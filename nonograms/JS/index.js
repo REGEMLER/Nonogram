@@ -1,3 +1,6 @@
+import {plusModelHelper} from "./models.js";
+import {plusModel} from "./models.js";
+
 function createField(numberHelpers, size) {
     const field = document.querySelector(".field");
     for(let i = 1; i <= size; i++) {
@@ -16,7 +19,16 @@ function createField(numberHelpers, size) {
             cell.classList.add("cell");
             if (i>numberHelpers && j>numberHelpers) {
                 cell.id = `${i - numberHelpers}-${j - numberHelpers}`;
+                cell.dataset.isCell = true;
                 cell.textContent = cell.id;
+            } else {
+                cell.id = `${i}-${j}h`;
+                cell.dataset.isCell = false;
+                const id = plusModelHelper.find(item => item.id === cell.id);
+                if(id) {
+                    cell.textContent = id.text;
+                }
+                // cell.textContent = cell.id;
             }
 
             if (j === numberHelpers) {
@@ -33,5 +45,59 @@ function createField(numberHelpers, size) {
         field.append(row);
     }
 }
+createField(3, 8);
 
-createField(5, 20)
+
+function checkWin(arr) {
+    return arr.every(item => item.isGuesed);
+}
+
+function checkGuesed(model, arr) {
+    model.map((item) => {
+        const element = arr.find(i => i.id === item.id);
+        if(element.classList.contains("cell_click") && item.isFull ||
+        !element.classList.contains("cell_click") && !item.isFull) {
+            item.isGuesed = true;
+        } else {
+            item.isGuesed = false;
+        }
+    });
+    // console.log(model);
+}
+
+function counter() {
+    const counterElement = document.getElementById("counter");
+    const newCounts = +counterElement.textContent + 1;
+    counterElement.textContent = newCounts;
+}
+
+function onClick(event) {
+    if(!event.target.dataset.isCell || event.target.dataset.isCell === "false") return;
+    counter();
+
+    if (event.target.classList.contains("cell_click")) {
+        event.target.classList.remove("cell_click");
+    } else {
+        event.target.classList.add("cell_click");
+    };
+
+    checkGuesed(plusModel, [...document.querySelectorAll("[data-is-cell='true']")]);
+    if(checkWin(plusModel)) console.log("Win")
+}
+
+function onContextMenu(event) {
+    if(!event.target.dataset.isCell || event.target.dataset.isCell === "false") return;
+    event.preventDefault();
+
+    if (event.target.textContent === "X") {
+        event.target.textContent = "";
+    } else {
+        event.target.textContent = "X";
+    }
+
+    checkGuesed(plusModel, [...document.querySelectorAll("[data-is-cell='true']")]);
+    if(checkWin(plusModel)) console.log("Win")
+}
+
+document.body.addEventListener("click", onClick);
+document.body.addEventListener("contextmenu", onContextMenu);
