@@ -3,9 +3,14 @@ import {crossModelHelper, crossModel} from "./Models/Easy/cross.js";
 import {skullModelHelper, skullModel} from "./Models/Easy/skull.js";
 import {batModelHelper, batModel} from "./Models/Easy/bat.js";
 import {treeModelHelper, treeModel} from "./Models/Easy/tree.js";
+import {questionModelHelper, questionModel} from "./Models/Medium/question.js";
+import {snailModelHelper, snailModel} from "./Models/Medium/snail.js";
+import {musicModelHelper, musicModel} from "./Models/Medium/music.js";
+import {mouseModelHelper, mouseModel} from "./Models/Medium/mouse.js";
+import {cherryModelHelper, cherryModel} from "./Models/Medium/cherry.js";
 
-const model = [...treeModel];
-const modelHelper = [...treeModelHelper];
+const model = [...snailModel];
+const modelHelper = [...snailModelHelper];
 
 function createField(numberHelpers, size) {
     const field = document.querySelector(".field");
@@ -51,7 +56,7 @@ function createField(numberHelpers, size) {
         field.append(row);
     }
 }
-createField(3, 8);
+createField(4, 14);
 
 
 function checkWin(arr) {
