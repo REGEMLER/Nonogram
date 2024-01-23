@@ -6,7 +6,7 @@
 }
 
 :root {
-    --LightBG : #b1b1b1; 
+    --LightBG : #f6ca9b; 
     --DarkBG : #303657;
     --DarkBTN : #325730;
     --LightBTN : #1a991c;
@@ -14,7 +14,6 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #7e86b4;
     overflow-x: hidden;
 }
 
@@ -51,10 +50,12 @@ ul,ol,li {
 
 .btn_light {
     background-color: var(--LightBTN);
+    color: black;
 }
 
 .btn_dark {
     background-color: var(--DarkBTN);
+    color: white;
 }
 
 .theme {
@@ -162,6 +163,7 @@ ul,ol,li {
 }
 
 .clue {
+    color: black;
     font-weight: bold;
 }
 
@@ -171,6 +173,10 @@ ul,ol,li {
 
 .cell_click {
     background-color: black;
+}
+
+.cell_click-night {
+    background-color: white;
 }
 
 

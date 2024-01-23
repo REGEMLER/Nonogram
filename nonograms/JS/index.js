@@ -1,5 +1,5 @@
 import {towerModelHelper, towerModel} from "./Models/Easy/tower.js";
-import {crossModelHelper, crossModel, cross, crossLeft, crossTop} from "./Models/Easy/cross.js";
+import {cross, crossLeft, crossTop} from "./Models/Easy/cross.js";
 import {skullModelHelper, skullModel} from "./Models/Easy/skull.js";
 import {batModelHelper, batModel} from "./Models/Easy/bat.js";
 import {treeModelHelper, treeModel} from "./Models/Easy/tree.js";
@@ -12,6 +12,31 @@ import {cherryModelHelper, cherryModel} from "./Models/Medium/cherry.js";
 const model = [...cross];
 const topNumbers = [...crossTop];
 const leftNumbers = [...crossLeft];
+
+function createWrapper() {
+    const wrapper = document.createElement("DIV");
+    wrapper.classList.add("wrapper");
+    wrapper.classList.add("bg_light");
+    wrapper.innerHTML = `
+    <div class="theme"><img src="assets/sun.png" alt="sun"></div>
+    <h1 class="title text_light">Welcome to Nonograms</h1>
+    <h2 class="subtitle text_light">Nonograms are picture logic puzzles in which cells in a grid must be colored or left blank according to numbers at the edges of the grid to reveal a hidden picture.</h2>
+    <div class="game">
+        <div class="time text_light">Time: <span>00:00</span></div>
+        <div class="clicks text_light">Clicks: <span id="counter">0</span></div>
+    </div>
+    <div class="field">
+    </div>
+    <div class="buttons">
+        <div class="button btn_light">New game</div>
+        <div class="button btn_light">Random game</div>
+        <div class="button btn_light">Continue</div>
+        <div class="button btn_light">Solution</div>
+        <div class="button btn_light">Save game</div>
+    </div>
+    `
+    document.body.append(wrapper);
+}
 
 function fullField() {
     const topElements = [...document.querySelectorAll("[data-cell='top']")];
@@ -68,6 +93,8 @@ function createField(numberHelpers, size) {
         fullField();
     }
 }
+
+createWrapper();
 createField(topNumbers.length / 5, topNumbers.length / 5 + 5);
 
 function checkWin() {
