@@ -140,7 +140,7 @@ ul,ol,li {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -161,6 +161,10 @@ ul,ol,li {
     border-right: 3px solid black;
 }
 
+.clue {
+    font-weight: bold;
+}
+
 .cell_five {
     border-right: 3px solid gray;
 }
@@ -168,6 +172,8 @@ ul,ol,li {
 .cell_click {
     background-color: black;
 }
+
+
 
 
 @media screen and (max-width: 850px) {
