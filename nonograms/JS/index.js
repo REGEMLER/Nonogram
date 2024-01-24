@@ -1,17 +1,18 @@
-import {towerModelHelper, towerModel} from "./Models/Easy/tower.js";
+import {tower, towerLeft, towerTop} from "./Models/Easy/tower.js";
 import {cross, crossLeft, crossTop} from "./Models/Easy/cross.js";
-import {skullModelHelper, skullModel} from "./Models/Easy/skull.js";
-import {batModelHelper, batModel} from "./Models/Easy/bat.js";
-import {treeModelHelper, treeModel} from "./Models/Easy/tree.js";
-import {questionModelHelper, questionModel} from "./Models/Medium/question.js";
-import {snailModelHelper, snailModel} from "./Models/Medium/snail.js";
-import {musicModelHelper, musicModel} from "./Models/Medium/music.js";
-import {mouseModelHelper, mouseModel} from "./Models/Medium/mouse.js";
-import {cherryModelHelper, cherryModel} from "./Models/Medium/cherry.js";
+import {skull, skullLeft, skullTop} from "./Models/Easy/skull.js";
+import {bat, batLeft, batTop} from "./Models/Easy/bat.js";
+import {tree, treeLeft, treerTop} from "./Models/Easy/tree.js";
+import {question, questionLeft, questionTop} from "./Models/Medium/question.js";
+import {snail, snailLeft, snailTop} from "./Models/Medium/snail.js";
+import { music, musicLeft, musicTop} from "./Models/Medium/music.js";
+import {mouse, mouseLeft, mouseTop} from "./Models/Medium/mouse.js";
+import {cherry, cherryLeft, cherryTop} from "./Models/Medium/cherry.js";
 
-const model = [...cross];
-const topNumbers = [...crossTop];
-const leftNumbers = [...crossLeft];
+const model = [...cherry];
+const topNumbers = [...cherryTop];
+const leftNumbers = [...cherryLeft];
+const level = 10;
 
 function createWrapper() {
     const wrapper = document.createElement("DIV");
@@ -95,7 +96,7 @@ function createField(numberHelpers, size) {
 }
 
 createWrapper();
-createField(topNumbers.length / 5, topNumbers.length / 5 + 5);
+createField(topNumbers.length / level, topNumbers.length / level + level);
 
 function checkWin() {
     const cellElements = [...document.querySelectorAll("[data-cell='cell']")];
