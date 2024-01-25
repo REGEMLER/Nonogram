@@ -8,11 +8,16 @@ import {snail, snailLeft, snailTop} from "./Models/Medium/snail.js";
 import { music, musicLeft, musicTop} from "./Models/Medium/music.js";
 import {mouse, mouseLeft, mouseTop} from "./Models/Medium/mouse.js";
 import {cherry, cherryLeft, cherryTop} from "./Models/Medium/cherry.js";
+import {home, homeLeft, homeTop} from "./Models/Hard/home.js";
+import {clover, cloverLeft, cloverTop} from "./Models/Hard/clover.js";
+import {spades, spadesLeft, spadesTop} from "./Models/Hard/spades.js";
+import {dolphin, dolphinLeft, dolphinTop} from "./Models/Hard/dolphin.js";
+import {deer, deerLeft, deerTop} from "./Models/Hard/deer.js";
 
-const model = [...cherry];
-const topNumbers = [...cherryTop];
-const leftNumbers = [...cherryLeft];
-const level = 10;
+const model = [...deer];
+const topNumbers = [...deerTop];
+const leftNumbers = [...deerLeft];
+const level = 15;
 
 function createWrapper() {
     const wrapper = document.createElement("DIV");

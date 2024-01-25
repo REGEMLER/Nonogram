@@ -153,11 +153,6 @@ ul,ol,li {
     border-bottom: 3px solid black;
 }
 
-.cell_empty {
-    border: none;
-    background-color: transparent;
-}
-
 .cell_helper {
     border-right: 3px solid black;
 }
@@ -177,6 +172,12 @@ ul,ol,li {
 
 .cell_click-night {
     background-color: white;
+}
+
+.cell_empty {
+    border: none;
+    background-color: transparent;
+    cursor: auto;
 }
 
 
