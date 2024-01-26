@@ -1,4 +1,4 @@
-import {createField, fullField, createWrapper, createModalLevel} from "./functions/creators.js";
+import {createField, fullField, createWrapper, createModalLevel, createModalNonogram} from "./functions/creators.js";
 import {createShema, createTheme} from "./functions/themes.js";
 import {setLevel, createModel} from "./functions/params.js";
 import {onContextMenu, onClick} from "./functions/events.js";
@@ -20,7 +20,25 @@ function startGame(levelID = "easy", nonogram = "tower"){
     fullField(topNumbers, leftNumbers);
     document.body.addEventListener("click", onClick);
     document.body.addEventListener("contextmenu", onContextMenu);
+
+    document.body.addEventListener("click", (event) => {
+        if(event.target.id !== "new") return;
+        createModalLevel(themeShema, THEME);
+    });
+    document.body.addEventListener("click", (event) => {
+        if(event.target.id !== "easy" && event.target.id !== "medium" && event.target.id !== "hard") return;
+        createModalNonogram(event.target.id, themeShema, THEME);
+    });
+    document.body.addEventListener("click", (event) => {
+        if(!event.target.dataset.nonogram) return;
+        const oldModal = document.querySelector(".modal");
+        oldModal.remove();
+        document.body.style.overflowY = "";
+        const level = localStorage.getItem("levelID");
+        startGame(level, event.target.id);
+    });
 }
 
-startGame("easy", "cross")
+startGame("easy", "cross");
+
 

@@ -21,6 +21,15 @@ export function createShema() {
 
 export function createTheme() {
     let THEME = localStorage.getItem("THEME");
+    if(!THEME) {
+        THEME = "light";
+    } 
+    localStorage.setItem("THEME", THEME);
+    return THEME
+}
+
+export function changeTheme() {
+    let THEME = localStorage.getItem("THEME");
     if(THEME === "light") {
         THEME = "dark";
     } else {
@@ -34,3 +43,4 @@ function toggleTheme(event) {
     if(!event.target.classList.contains("theme") && !event.target.parentElement.classList.contains("theme") ) return;
     alert("erger")
 }
+

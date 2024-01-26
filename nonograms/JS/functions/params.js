@@ -24,7 +24,7 @@ export function setLevel(levelID) {
     } else {
         level = 5;
     }
-    localStorage.setItem("THEME", level);
+    localStorage.setItem("level", level);
     return level;
 }
 

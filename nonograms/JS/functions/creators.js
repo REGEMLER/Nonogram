@@ -60,6 +60,8 @@ export function fullField(topNumbers, leftNumbers) {
 }
 
 export function createWrapper(themeShema, THEME) {
+    const oldWrapper = document.querySelector(".wrapper");
+    if(oldWrapper) oldWrapper.remove();
     const wrapper = document.createElement("DIV");
     wrapper.classList.add("wrapper");
     wrapper.classList.add(`${themeShema[THEME].bg}`);
@@ -74,7 +76,7 @@ export function createWrapper(themeShema, THEME) {
     <div class="field">
     </div>
     <div class="buttons">
-        <div class="button ${themeShema[THEME].button}">New game</div>
+        <div id="new" class="button ${themeShema[THEME].button}">New game</div>
         <div class="button ${themeShema[THEME].button}">Restart</div>
         <div class="button ${themeShema[THEME].button}">Random game</div>
         <div class="button ${themeShema[THEME].button}">Continue</div>
@@ -86,15 +88,15 @@ export function createWrapper(themeShema, THEME) {
     document.body.append(wrapper);
 }
 
-export function createModalLevel(themeShema){
+export function createModalLevel(themeShema, THEME){
     const modal = document.createElement("DIV");
     modal.classList.add("modal");
     modal.innerHTML = `
     <div class="modal_inner">
     <span>X</span>
-    <div class="button ${themeShema[THEME].button}">Easy</div>
-    <div class="button ${themeShema[THEME].button}">Medium</div>
-    <div class="button ${themeShema[THEME].button}">Hard</div>
+    <div id="easy" class="button ${themeShema[THEME].button}">Easy</div>
+    <div id="medium" class="button ${themeShema[THEME].button}">Medium</div>
+    <div id="hard" class="button ${themeShema[THEME].button}">Hard</div>
     </div>
     `
     document.body.append(modal);
@@ -104,5 +106,56 @@ export function createModalLevel(themeShema){
         e.stopPropagation()
         const modal = document.querySelector(".modal");
         modal.remove();
+        document.body.style.overflowY = "";
+    });
+}
+
+export function createModalNonogram(levelID, themeShema, THEME) {
+    localStorage.setItem("levelID", levelID);
+    const oldModal = document.querySelector(".modal");
+    oldModal.remove();
+    const modal = document.createElement("DIV");
+    modal.classList.add("modal");
+    let str = "";
+    if(levelID ==="easy") {
+        str = `
+        <div id="tower" data-nonogram="true" class="button ${themeShema[THEME].button}">Tower</div>
+        <div id="cross" data-nonogram="true" class="button ${themeShema[THEME].button}">Cross</div>
+        <div id="skull" data-nonogram="true" class="button ${themeShema[THEME].button}">Skull</div>
+        <div id="bat" data-nonogram="true" class="button ${themeShema[THEME].button}">Bat</div>
+        <div id="tree" data-nonogram="true" class="button ${themeShema[THEME].button}">Tree</div>
+        `
+    } else if(levelID === "medium") {
+        str = `
+        <div id="question" data-nonogram="true" class="button ${themeShema[THEME].button}">Question</div>
+        <div id="snail" data-nonogram="true" class="button ${themeShema[THEME].button}">Snail</div>
+        <div id="music" data-nonogram="true" class="button ${themeShema[THEME].button}">Music</div>
+        <div id="mouse" data-nonogram="true" class="button ${themeShema[THEME].button}">Mouse</div>
+        <div id="cherry" data-nonogram="true" class="button ${themeShema[THEME].button}">Cherry</div>
+        `
+    } else {
+        str = `
+        <div id="home" data-nonogram="true" class="button ${themeShema[THEME].button}">Home</div>
+        <div id="clover" data-nonogram="true" class="button ${themeShema[THEME].button}">Clover</div>
+        <div id="spades"  data-nonogram="true" class="button ${themeShema[THEME].button}">Spades</div>
+        <div id="dolphin" data-nonogram="true" class="button ${themeShema[THEME].button}">Dolphin</div>
+        <div id="deer" data-nonogram="true" class="button ${themeShema[THEME].button}">Deer</div>
+        `
+    }
+
+    modal.innerHTML = `
+    <div class="modal_inner">
+    <span>X</span>
+    ${str}
+    </div>
+    `
+    document.body.append(modal);
+    document.body.style.overflowY = "hidden";
+    const cross = modal.querySelector("span");
+    cross.addEventListener("click", (e) => {
+        e.stopPropagation()
+        const modal = document.querySelector(".modal");
+        modal.remove();
+        document.body.style.overflowY = "";
     });
 }

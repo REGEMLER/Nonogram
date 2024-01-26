@@ -99,6 +99,7 @@ ul,ol,li {
 
 .buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -238,9 +239,6 @@ ul,ol,li {
     .cell {
         width: 30px;
         height: 30px;
-    }
-    .buttons {
-        flex-wrap: wrap;
     }
     .button {
         width: 130px;
