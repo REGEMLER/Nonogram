@@ -239,6 +239,9 @@ ul,ol,li {
         width: 30px;
         height: 30px;
     }
+    .buttons {
+        flex-wrap: wrap;
+    }
     .button {
         width: 130px;
         height: 40px;

@@ -14,13 +14,38 @@ import {spades, spadesLeft, spadesTop} from "./Models/Hard/spades.js";
 import {dolphin, dolphinLeft, dolphinTop} from "./Models/Hard/dolphin.js";
 import {deer, deerLeft, deerTop} from "./Models/Hard/deer.js";
 
-const model = [...mouse];
-const leftNumbers = [...mouseLeft];
-const topNumbers = [...mouseTop];
-const level = 10;
+const model = [...tower];
+const leftNumbers = [...towerLeft];
+const topNumbers = [...towerTop];
+const level = 5;
+let timerID = null;
+
+function timer(){
+    const clicks = document.getElementById("counter").textContent;
+    if(clicks !== "0") return;
+    timerID = setInterval(()=>{
+        let span = document.querySelector(".time span");
+        let text = span.textContent;
+        let minutes = +text.slice(0,2);
+        let seconds = +text.slice(3);
+        let newSeconds = seconds + 1;
+        let newMinutes = minutes;
+        if(newSeconds === 60) {
+            newMinutes = minutes + 1;
+            newSeconds = 0;
+        }
+        span.textContent = `${String(newMinutes).padStart(2, '0')}:${String(newSeconds).padStart(2, '0')}`;
+    },1000)
+    console.log(timerID)
+}
+function stopTimer() {
+    clearInterval(timerID);
+    console.log(timerID)
+}
+
+
 
 let THEME = "light";
-
 const themeShema = {
     light : {
         bg : "bg_light",
@@ -44,7 +69,7 @@ function toggleTheme(event) {
     if(!event.target.classList.contains("theme") && !event.target.parentElement.classList.contains("theme") ) return;
     alert("erger")
 }
-document.body.addEventListener("click", toggleTheme);
+
 
 function createModal(){
     const modal = document.createElement("DIV");
@@ -68,7 +93,7 @@ function createModal(){
         modal.remove();
     });
 }
-document.body.addEventListener("click", createModal)
+
 
 function createWrapper() {
     const wrapper = document.createElement("DIV");
@@ -86,10 +111,12 @@ function createWrapper() {
     </div>
     <div class="buttons">
         <div class="button ${themeShema[THEME].button}">New game</div>
+        <div class="button ${themeShema[THEME].button}">Restart</div>
         <div class="button ${themeShema[THEME].button}">Random game</div>
         <div class="button ${themeShema[THEME].button}">Continue</div>
         <div class="button ${themeShema[THEME].button}">Solution</div>
         <div class="button ${themeShema[THEME].button}">Save game</div>
+        <div class="button ${themeShema[THEME].button}">Results</div>
     </div>
     `
     document.body.append(wrapper);
@@ -107,8 +134,6 @@ function fullField() {
 }
 
 function createField(numberHelpers, size) {
-    console.log(numberHelpers)
-    console.log(size)
     const field = document.querySelector(".field");
     for(let i = 0; i < size; i++) {
         const row = document.createElement("DIV");
@@ -178,6 +203,7 @@ function counter() {
 
 function onClick(event) {
     if(!event.target.dataset.cell || event.target.dataset.cell !== "cell") return;
+    timer();
     counter();
 
     if (event.target.classList.contains("cell_click_light")) {
@@ -185,7 +211,10 @@ function onClick(event) {
     } else {
         event.target.classList.add("cell_click_light");
     };
-    if(checkWin()) console.log("Win")
+    if(checkWin()) {
+        stopTimer();
+        console.log("Win")
+    }
 }
 
 function onContextMenu(event) {
