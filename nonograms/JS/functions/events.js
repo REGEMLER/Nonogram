@@ -23,25 +23,25 @@ export function onContextMenu(event) {
     }
 }
 
-export function onClick(event) {
-    if(!event.target.dataset.cell || event.target.dataset.cell !== "cell") return;
-    timer();
+export function onClick(themeShema, THEME, event) {
+    const clicks = document.getElementById("counter").textContent;
+    if(clicks === "0") timer();;
     counter();
 
-    if (event.target.classList.contains("cell_click_light")) {
-        event.target.classList.remove("cell_click_light");
+    if (event.target.classList.contains(`${themeShema[THEME].cellClick}`)) {
+        event.target.classList.remove(`${themeShema[THEME].cellClick}`);
     } else {
-        event.target.classList.add("cell_click_light");
+        event.target.classList.add(`${themeShema[THEME].cellClick}`);
     };
-    if(checkWin()) {
+    if(checkWin(themeShema, THEME)) {
         win();
     }
 }
 
-function checkWin() {
+function checkWin(themeShema, THEME) {
     const model = JSON.parse(localStorage.getItem("model"));
     const cellElements = [...document.querySelectorAll("[data-cell='cell']")];
-    const cellElementsMatrix = cellElements.map( item => item.classList.contains("cell_click_light"));
+    const cellElementsMatrix = cellElements.map( item => item.classList.contains(`${themeShema[THEME].cellClick}`));
     return cellElementsMatrix.every((item, index) => {
         return item === model[index];
     })

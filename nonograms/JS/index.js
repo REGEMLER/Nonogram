@@ -2,6 +2,7 @@ import {createField, fullField, createWrapper, createModalLevel, createModalNono
 import {createShema, createTheme} from "./functions/themes.js";
 import {setLevel, createModel} from "./functions/params.js";
 import {onContextMenu, onClick, reset} from "./functions/events.js";
+import {timer, stopTimer} from "./functions/timers.js";
 
 
 function startGame(levelID = "easy", nonogram = "tower"){
@@ -18,21 +19,34 @@ function startGame(levelID = "easy", nonogram = "tower"){
     createField(topNumbers.length / level, topNumbers.length / level + level, themeShema, THEME);
 
     fullField(topNumbers, leftNumbers);
-    document.body.addEventListener("click", onClick);
-    document.body.addEventListener("contextmenu", onContextMenu);
 
-    document.body.addEventListener("click", (event) => {
+    const wrapper = document.querySelector(".wrapper");
+    
+    wrapper.addEventListener("contextmenu", onContextMenu);
+
+    //game process
+    wrapper.addEventListener("click", (event) => {
+        if(!event.target.dataset.cell || event.target.dataset.cell !== "cell") return;
+        onClick(themeShema, THEME, event)
+    });
+
+    //start new game
+    wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "new") return;
         event.stopPropagation();
         createModalLevel(themeShema, THEME);
+        stopTimer();
     });
 
+
+    //select level and go to select picture
     document.body.addEventListener("click", (event) => {
         if(event.target.id !== "easy" && event.target.id !== "medium" && event.target.id !== "hard") return;
         event.stopPropagation();
         createModalNonogram(event.target.id, themeShema, THEME);
     });
 
+    //select picture and start new game
     document.body.addEventListener("click", (event) => {
         if(!event.target.dataset.nonogram) return;
         event.stopPropagation();
@@ -44,7 +58,7 @@ function startGame(levelID = "easy", nonogram = "tower"){
     });
 
     //reset
-    document.body.addEventListener("click", (event) => {
+    wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "reset") return;
         event.stopPropagation();
         reset(themeShema, THEME);

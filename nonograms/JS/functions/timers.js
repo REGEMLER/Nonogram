@@ -1,7 +1,5 @@
 export function timer(){
     let timerID = null;
-    const clicks = document.getElementById("counter").textContent;
-    if(clicks !== "0") return;
     timerID = setInterval( () => {
         let span = document.querySelector(".time span");
         let text = span.textContent;

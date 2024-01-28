@@ -1,3 +1,5 @@
+import {timer, stopTimer} from "./timers.js";
+
 export function createField(numberHelpers, size, themeShema, THEME) {
     const field = document.querySelector(".field");
     for(let i = 0; i < size; i++) {
@@ -88,6 +90,14 @@ export function createWrapper(themeShema, THEME) {
     document.body.append(wrapper);
 }
 
+function closeModal(event) {
+    event.stopPropagation()
+    const modal = document.querySelector(".modal");
+    modal.remove();
+    document.body.style.overflowY = "";
+    timer();
+}
+
 export function createModalLevel(themeShema, THEME){
     const modal = document.createElement("DIV");
     modal.classList.add("modal");
@@ -102,12 +112,7 @@ export function createModalLevel(themeShema, THEME){
     document.body.append(modal);
     document.body.style.overflowY = "hidden";
     const cross = modal.querySelector("span");
-    cross.addEventListener("click", (e) => {
-        e.stopPropagation()
-        const modal = document.querySelector(".modal");
-        modal.remove();
-        document.body.style.overflowY = "";
-    });
+    cross.addEventListener("click", closeModal);
 }
 
 export function createModalNonogram(levelID, themeShema, THEME) {
@@ -152,10 +157,5 @@ export function createModalNonogram(levelID, themeShema, THEME) {
     document.body.append(modal);
     document.body.style.overflowY = "hidden";
     const cross = modal.querySelector("span");
-    cross.addEventListener("click", (e) => {
-        e.stopPropagation()
-        const modal = document.querySelector(".modal");
-        modal.remove();
-        document.body.style.overflowY = "";
-    });
+    cross.addEventListener("click", closeModal);
 }
