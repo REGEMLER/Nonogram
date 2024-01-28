@@ -23,6 +23,11 @@ ul,ol,li {
     list-style: none;
 }
 
+.audio {
+    opacity: 0;
+    visibility: hidden;
+}
+
 .wrapper {
     width: 100vw;
     min-height: 100vh;

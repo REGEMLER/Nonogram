@@ -1,5 +1,6 @@
 import {timer, stopTimer} from "./timers.js";
 import {createModalWin} from "./creators.js";
+import {sound} from "./sounds.js";
 
 export function reset(themeShema, THEME) {
     const cells = [...document.querySelectorAll("[data-cell='cell']")];
@@ -16,6 +17,7 @@ export function reset(themeShema, THEME) {
 export function onContextMenu(event) {
     if(!event.target.dataset.cell || event.target.dataset.cell !== "cell") return;
     event.preventDefault();
+    sound("./assets/flag.mp3");
 
     if (event.target.textContent === "X") {
         event.target.textContent = "";
@@ -28,6 +30,7 @@ export function onClick(themeShema, THEME, event) {
     const clicks = document.getElementById("counter").textContent;
     if(clicks === "0") timer();;
     counter();
+    sound("./assets/click.mp3");
 
     if (event.target.classList.contains(`${themeShema[THEME].cellClick}`)) {
         event.target.classList.remove(`${themeShema[THEME].cellClick}`);
@@ -57,4 +60,5 @@ function counter() {
 function win(themeShema, THEME){
     stopTimer();
     createModalWin(themeShema, THEME);
+    sound("./assets/win.mp3");
 }

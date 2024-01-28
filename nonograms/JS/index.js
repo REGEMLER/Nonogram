@@ -3,6 +3,7 @@ import {createShema, createTheme} from "./functions/themes.js";
 import {setLevel, createModel} from "./functions/params.js";
 import {onContextMenu, onClick, reset} from "./functions/events.js";
 import {timer, stopTimer} from "./functions/timers.js";
+import {sound} from "./functions/sounds.js";
 
 
 function startGame(levelID = "easy", nonogram = "tower"){
@@ -19,6 +20,7 @@ function startGame(levelID = "easy", nonogram = "tower"){
     createField(topNumbers.length / level, topNumbers.length / level + level, themeShema, THEME);
 
     fullField(topNumbers, leftNumbers);
+    sound("./assets/start.mp3");
 
     const wrapper = document.querySelector(".wrapper");
     
