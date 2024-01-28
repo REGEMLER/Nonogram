@@ -77,7 +77,7 @@ export function createWrapper(themeShema, THEME) {
     </div>
     <div class="buttons">
         <div id="new" class="button ${themeShema[THEME].button}">New game</div>
-        <div class="button ${themeShema[THEME].button}">Restart</div>
+        <div id="reset" class="button ${themeShema[THEME].button}">Reset</div>
         <div class="button ${themeShema[THEME].button}">Random game</div>
         <div class="button ${themeShema[THEME].button}">Continue</div>
         <div class="button ${themeShema[THEME].button}">Solution</div>

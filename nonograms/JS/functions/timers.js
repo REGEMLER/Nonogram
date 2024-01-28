@@ -20,5 +20,4 @@ export function timer(){
 export function stopTimer() {
     const timerID = +localStorage.getItem("timerID");
     clearInterval(timerID);
-    console.log(timerID)
 }

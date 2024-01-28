@@ -1,5 +1,17 @@
 import {timer, stopTimer} from "./timers.js";
 
+export function reset(themeShema, THEME) {
+    const cells = [...document.querySelectorAll("[data-cell='cell']")];
+    cells.forEach(item => {
+        item.classList.remove(`${themeShema[THEME].cellClick}`);
+    })
+    const counterElement = document.getElementById("counter");
+    counterElement.textContent = 0;
+    stopTimer();
+    const span = document.querySelector(".time span");
+    span.textContent = "00:00";
+}
+
 export function onContextMenu(event) {
     if(!event.target.dataset.cell || event.target.dataset.cell !== "cell") return;
     event.preventDefault();

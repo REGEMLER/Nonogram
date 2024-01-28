@@ -216,8 +216,10 @@ ul,ol,li {
 .modal_inner {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     width: 70%;
+    margin: 0 auto;
     min-height: 300px;
     padding: 2rem;
     background-color: var(--LightSecondary);
