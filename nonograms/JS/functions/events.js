@@ -15,8 +15,11 @@ export function reset(themeShema, THEME) {
 }
 
 export function onContextMenu(event) {
-    if(!event.target.dataset.cell || event.target.dataset.cell !== "cell") return;
     event.preventDefault();
+    if(!event.target.dataset.cell || 
+        event.target.dataset.cell !== "cell" || 
+        event.target.classList.contains("cell_click_light") ||
+        event.target.classList.contains("cell_click_dark")) return;
     sound("./assets/flag.mp3");
 
     if (event.target.textContent === "X") {
@@ -28,7 +31,8 @@ export function onContextMenu(event) {
 
 export function onClick(themeShema, THEME, event) {
     const clicks = document.getElementById("counter").textContent;
-    if(clicks === "0") timer();;
+    if(clicks === "0") timer();
+    event.target.textContent = "";
     counter();
     sound("./assets/click.mp3");
 

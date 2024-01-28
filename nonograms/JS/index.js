@@ -69,4 +69,3 @@ function startGame(levelID = "easy", nonogram = "tower"){
 
 startGame("easy", "cross");
 
-
