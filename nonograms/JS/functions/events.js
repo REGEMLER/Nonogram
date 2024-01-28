@@ -1,4 +1,5 @@
 import {timer, stopTimer} from "./timers.js";
+import {createModalWin} from "./creators.js";
 
 export function reset(themeShema, THEME) {
     const cells = [...document.querySelectorAll("[data-cell='cell']")];
@@ -34,7 +35,7 @@ export function onClick(themeShema, THEME, event) {
         event.target.classList.add(`${themeShema[THEME].cellClick}`);
     };
     if(checkWin(themeShema, THEME)) {
-        win();
+        win(themeShema, THEME);
     }
 }
 
@@ -53,8 +54,7 @@ function counter() {
     counterElement.textContent = newCounts;
 }
 
-function win(){
+function win(themeShema, THEME){
     stopTimer();
-    console.log("Win");
-    document.body.removeEventListener("click", onClick);
+    createModalWin(themeShema, THEME);
 }

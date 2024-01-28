@@ -102,7 +102,7 @@ export function createModalLevel(themeShema, THEME){
     const modal = document.createElement("DIV");
     modal.classList.add("modal");
     modal.innerHTML = `
-    <div class="modal_inner">
+    <div class="modal_inner ${themeShema[THEME].modal}">
     <span>X</span>
     <div id="easy" class="button ${themeShema[THEME].button}">Easy</div>
     <div id="medium" class="button ${themeShema[THEME].button}">Medium</div>
@@ -149,7 +149,7 @@ export function createModalNonogram(levelID, themeShema, THEME) {
     }
 
     modal.innerHTML = `
-    <div class="modal_inner">
+    <div class="modal_inner ${themeShema[THEME].modal}">
     <span>X</span>
     ${str}
     </div>
@@ -158,4 +158,31 @@ export function createModalNonogram(levelID, themeShema, THEME) {
     document.body.style.overflowY = "hidden";
     const cross = modal.querySelector("span");
     cross.addEventListener("click", closeModal);
+}
+
+export function createModalWin(themeShema, THEME) {
+    const modal = document.createElement("DIV");
+    modal.classList.add("modal");
+    const span = document.querySelector(".time span");
+    const text = span.textContent;
+    const minutes = +text.slice(0,2);
+    const seconds = +text.slice(3);
+    const result = minutes * 60 + seconds;
+    const name = localStorage.getItem("modelName");
+    modal.innerHTML = `
+    <div class="modal_inner ${themeShema[THEME].modal}">
+    <span>X</span>
+    <p class="${themeShema[THEME].textWin}">
+    Great! You have solved the nonogram <span>${name}</span> in <span>${result}</span> seconds!
+    </p>
+    </div>
+    `
+    document.body.append(modal);
+    document.body.style.overflowY = "hidden";
+    modal.addEventListener("click", (event)=> {
+        event.stopPropagation()
+        const modal = document.querySelector(".modal");
+        modal.remove();
+        document.body.style.overflowY = "";
+    });
 }

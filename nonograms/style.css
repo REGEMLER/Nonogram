@@ -222,9 +222,17 @@ ul,ol,li {
     margin: 0 auto;
     min-height: 300px;
     padding: 2rem;
-    background-color: var(--LightSecondary);
+
     border-radius: 40px;
     position: relative;
+}
+
+.modal_bg_light {
+    background-color: var(--LightSecondary);
+}
+
+.modal_bg_dark {
+    background-color: var(--DarkSecondary);
 }
 
 .modal_inner span {
@@ -234,8 +242,21 @@ ul,ol,li {
     cursor: pointer;
 }
 
+.text_win_light {
+    font-size: 1.2rem;
+    color: var(--LightBTN);
+}
 
+.text_win_light span,
+.text_win_dark span {
+    position: static;
+    font-weight: bold;
+}
 
+.text_win_dark {
+    font-size: 1.2rem;
+    color: var(--DarkBTN);
+}
 
 @media screen and (max-width: 850px) {
     .cell {

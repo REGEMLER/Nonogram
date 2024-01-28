@@ -113,6 +113,7 @@ export function createModel(nonogram){
             numbersTop = towerTop;
             numbersLeft = towerLeft;    
     }
+    localStorage.setItem("modelName", nonogram);
     setModel(model);
     setModelTop(numbersTop);
     setModelLeft(numbersLeft);
