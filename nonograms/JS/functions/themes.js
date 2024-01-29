@@ -1,13 +1,20 @@
 export function createTheme() {
     let THEME = localStorage.getItem("THEME");
-    const hours = new Date().getHours();
-    if(hours < 21) {
-        THEME = "dark";
-    } else {
-        THEME = "light";
+    if(THEME === "dark") {
+        setTheme();
+        setTheme();
+    }
+    if(!THEME) {
+        const hours = new Date().getHours();
+        if(hours < 21) {
+            THEME = "dark";
+        } else {
+            THEME = "light";
+        }
+        setTheme();
     }
     localStorage.setItem("THEME", THEME);
-    return THEME
+    return THEME;
 }
 
 export function setTheme() {

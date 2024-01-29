@@ -37,8 +37,3 @@
     font-size: 1.2rem;
     color: var(--BTN);
 }
-
-.text_win span {
-    position: static;
-    font-weight: bold;
-}

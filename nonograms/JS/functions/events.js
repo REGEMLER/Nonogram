@@ -30,6 +30,7 @@ export function onContextMenu(event) {
 }
 
 export function onClick(event) {
+    if(checkWin()) return;
     const clicks = document.getElementById("counter").textContent;
     if(clicks === "0") timer();
     event.target.textContent = "";

@@ -18,8 +18,6 @@ function startGame(levelID = "easy", nonogram = "tower"){
     fullField(topNumbers, leftNumbers);
 
     createTheme();
-    setTheme();
-
     sound("./assets/start.mp3");
 
     const wrapper = document.querySelector(".wrapper");
@@ -74,4 +72,3 @@ function startGame(levelID = "easy", nonogram = "tower"){
     });
 }
 startGame("easy", "cross");
-
