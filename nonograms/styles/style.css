@@ -5,14 +5,14 @@
     box-sizing: border-box;
 }
 
-:root {
+/* :root {
     --LightBG : #f6ca9b; 
     --DarkBG : #303657;
     --DarkBTN : #325730;
     --LightBTN : #1a991c;
     --LightSecondary: #f0dc6c ;
     --DarkSecondary: #E5DFAF;
-}
+} */
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -39,7 +39,7 @@ ul,ol,li {
     position: relative;
 }
 
-.bg_light {
+/* .bg_light {
     background-color: var(--LightBG);
 }
 
@@ -63,7 +63,7 @@ ul,ol,li {
 .btn_dark {
     background-color: var(--DarkBTN);
     color: white;
-}
+} */
 
 .theme {
     width: 24px;
@@ -152,13 +152,13 @@ ul,ol,li {
     cursor: pointer;
 }
 
-.bg_cell_light {
+/* .bg_cell_light {
     background-color: #fff;
 }
 
 .bg_cell_dark {
     background-color: black;
-}
+} */
 
 .cell_five {
     border-right: 3px solid gray;
@@ -168,13 +168,13 @@ ul,ol,li {
     border-bottom: 3px solid gray;
 }
 
-.cell_click_light {
+/* .cell_click_light {
     background-color: black;
 }
 
 .cell_click-dark {
     background-color: white;
-}
+} */
 
 .cell_empty {
     border: none;
@@ -195,13 +195,13 @@ ul,ol,li {
     cursor: auto;
 }
 
-.clue_light {
+/* .clue_light {
     background-color: var(--LightSecondary);
 }
 
 .clue_dark {
     background-color: var(--DarkSecondary);
-}
+} */
 
 .modal {
     width: 100vw;
@@ -232,13 +232,13 @@ ul,ol,li {
     position: relative;
 }
 
-.modal_bg_light {
+/* .modal_bg_light {
     background-color: var(--LightSecondary);
 }
 
 .modal_bg_dark {
     background-color: var(--DarkSecondary);
-}
+} */
 
 .modal_inner span {
     position: absolute;
@@ -247,10 +247,10 @@ ul,ol,li {
     cursor: pointer;
 }
 
-.text_win_light {
+/* .text_win_light {
     font-size: 1.2rem;
     color: var(--LightBTN);
-}
+} */
 
 .text_win_light span,
 .text_win_dark span {
@@ -258,10 +258,10 @@ ul,ol,li {
     font-weight: bold;
 }
 
-.text_win_dark {
+/* .text_win_dark {
     font-size: 1.2rem;
     color: var(--DarkBTN);
-}
+} */
 
 @media screen and (max-width: 850px) {
     .cell {

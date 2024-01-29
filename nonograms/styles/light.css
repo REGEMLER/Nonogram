@@ -1,0 +1,44 @@
+:root {
+    --BG : #f6ca9b; 
+    --BTN : #1a991c;
+    --Secondary: #f0dc6c ;
+}
+
+.bg {
+    background-color: var(--BG);
+}
+
+.text {
+    color: black;
+}
+
+.btn {
+    background-color: var(--BTN);
+    color: black;
+}
+
+.bg_cell {
+    background-color: #fff;
+}
+
+.cell_click {
+    background-color: black;
+}
+
+.clue_bg {
+    background-color: var(--Secondary);
+}
+
+.modal_bg {
+    background-color: var(--Secondary);
+}
+
+.text_win {
+    font-size: 1.2rem;
+    color: var(--BTN);
+}
+
+.text_win span {
+    position: static;
+    font-weight: bold;
+}

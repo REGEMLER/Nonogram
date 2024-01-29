@@ -1,40 +1,7 @@
-export function createShema() {
-    return {
-        light : {
-            bg : "bg_light",
-            text : "text_light",
-            button : "btn_light",
-            cell : "bg_cell_light",
-            cellClick : "cell_click_light",
-            clue : "clue_light",
-            textWin : "text_win_light",
-            modal : "modal_bg_light"
-        },
-        dark : {
-            bg : "bg_dark",
-            text : "text_dark",
-            button : "btn_dark",
-            cell : "bg_cell_dark",
-            cellClick : "cell_click_dark",
-            clue : "clue_dark",
-            textWin : "text_win_dark",
-            modal : "modal_bg_dark"
-        },
-    }
-}
-
 export function createTheme() {
     let THEME = localStorage.getItem("THEME");
-    if(!THEME) {
-        THEME = "light";
-    } 
-    localStorage.setItem("THEME", THEME);
-    return THEME
-}
-
-export function changeTheme() {
-    let THEME = localStorage.getItem("THEME");
-    if(THEME === "light") {
+    const hours = new Date().getHours();
+    if(hours < 21) {
         THEME = "dark";
     } else {
         THEME = "light";
@@ -43,8 +10,22 @@ export function changeTheme() {
     return THEME
 }
 
-function toggleTheme(event) {
-    if(!event.target.classList.contains("theme") && !event.target.parentElement.classList.contains("theme") ) return;
-    alert("erger")
+export function setTheme() {
+    let THEME = localStorage.getItem("THEME");
+    const link = [...document.head.querySelectorAll("link")][1];
+    const img = document.querySelector(".theme img");
+    if(THEME === "light") {
+        link.setAttribute("href", "styles/dark.css");
+        img.src = "assets/moon.png";
+        img.alt = "moon";
+        THEME = "dark";
+    } else {
+        link.setAttribute("href", "styles/light.css");
+        img.src = "assets/sun.png";
+        img.alt = "sun";
+        THEME = "light";
+    }
+    localStorage.setItem("THEME", THEME);
+    return THEME;
 }
 

@@ -1,6 +1,6 @@
 import {timer, stopTimer} from "./timers.js";
 
-export function createField(numberHelpers, size, themeShema, THEME) {
+export function createField(numberHelpers, size) {
     const field = document.querySelector(".field");
     for(let i = 0; i < size; i++) {
         const row = document.createElement("DIV");
@@ -26,19 +26,19 @@ export function createField(numberHelpers, size, themeShema, THEME) {
 
             if (i>numberHelpers - 1 && j>numberHelpers - 1) {
                 cell.dataset.cell = "cell";
-                cell.classList.add(`${themeShema[THEME].cell}`);
+                cell.classList.add(`bg_cell`);
             } 
             if (i > numberHelpers - 1 && j <= numberHelpers - 1 ) {
                 cell.dataset.cell = "left";
                 cell.classList.add("clue");
-                cell.classList.add(`${themeShema[THEME].text}`);
-                cell.classList.add(`${themeShema[THEME].clue}`);
+                cell.classList.add(`text`);
+                cell.classList.add(`clue_bg`);
             } 
             if (i <= numberHelpers - 1  && j > numberHelpers - 1 ) {
                 cell.dataset.cell = "top";
                 cell.classList.add("clue");
-                cell.classList.add(`${themeShema[THEME].text}`);
-                cell.classList.add(`${themeShema[THEME].clue}`);
+                cell.classList.add(`text`);
+                cell.classList.add(`clue_bg`);
             } 
             if (i <= numberHelpers - 1 && j <= numberHelpers - 1) {
                 cell.dataset.cell = "empty";
@@ -61,30 +61,30 @@ export function fullField(topNumbers, leftNumbers) {
     });
 }
 
-export function createWrapper(themeShema, THEME) {
+export function createWrapper() {
     const oldWrapper = document.querySelector(".wrapper");
     if(oldWrapper) oldWrapper.remove();
     const wrapper = document.createElement("DIV");
     wrapper.classList.add("wrapper");
-    wrapper.classList.add(`${themeShema[THEME].bg}`);
+    wrapper.classList.add(`bg`);
     wrapper.innerHTML = `
     <div class="theme"><img src="assets/sun.png" alt="sun"></div>
-    <h1 class="title ${themeShema[THEME].text}">Welcome to Nonograms</h1>
-    <h2 class="subtitle ${themeShema[THEME].text}">Nonograms are picture logic puzzles in which cells in a grid must be colored or left blank according to numbers at the edges of the grid to reveal a hidden picture.</h2>
+    <h1 class="title text">Welcome to Nonograms</h1>
+    <h2 class="subtitle text">Nonograms are picture logic puzzles in which cells in a grid must be colored or left blank according to numbers at the edges of the grid to reveal a hidden picture.</h2>
     <div class="game">
-        <div class="time ${themeShema[THEME].text}">Time: <span>00:00</span></div>
-        <div class="clicks ${themeShema[THEME].text}">Clicks: <span id="counter">0</span></div>
+        <div class="time text">Time: <span>00:00</span></div>
+        <div class="clicks text">Clicks: <span id="counter">0</span></div>
     </div>
     <div class="field">
     </div>
     <div class="buttons">
-        <div id="new" class="button ${themeShema[THEME].button}">New game</div>
-        <div id="reset" class="button ${themeShema[THEME].button}">Reset</div>
-        <div class="button ${themeShema[THEME].button}">Random game</div>
-        <div class="button ${themeShema[THEME].button}">Continue</div>
-        <div class="button ${themeShema[THEME].button}">Solution</div>
-        <div class="button ${themeShema[THEME].button}">Save game</div>
-        <div class="button ${themeShema[THEME].button}">Results</div>
+        <div id="new" class="button btn">New game</div>
+        <div id="reset" class="button btn">Reset</div>
+        <div class="button btn">Random game</div>
+        <div class="button btn">Continue</div>
+        <div class="button btn">Solution</div>
+        <div class="button btn">Save game</div>
+        <div class="button btn">Results</div>
     </div>
     `
     document.body.append(wrapper);
@@ -98,15 +98,15 @@ function closeModal(event) {
     timer();
 }
 
-export function createModalLevel(themeShema, THEME){
+export function createModalLevel(){
     const modal = document.createElement("DIV");
     modal.classList.add("modal");
     modal.innerHTML = `
-    <div class="modal_inner ${themeShema[THEME].modal}">
+    <div class="modal_inner modal_bg">
     <span>X</span>
-    <div id="easy" class="button ${themeShema[THEME].button}">Easy</div>
-    <div id="medium" class="button ${themeShema[THEME].button}">Medium</div>
-    <div id="hard" class="button ${themeShema[THEME].button}">Hard</div>
+    <div id="easy" class="button btn">Easy</div>
+    <div id="medium" class="button btn">Medium</div>
+    <div id="hard" class="button btn">Hard</div>
     </div>
     `
     document.body.append(modal);
@@ -115,7 +115,7 @@ export function createModalLevel(themeShema, THEME){
     cross.addEventListener("click", closeModal);
 }
 
-export function createModalNonogram(levelID, themeShema, THEME) {
+export function createModalNonogram(levelID) {
     localStorage.setItem("levelID", levelID);
     const oldModal = document.querySelector(".modal");
     oldModal.remove();
@@ -124,32 +124,32 @@ export function createModalNonogram(levelID, themeShema, THEME) {
     let str = "";
     if(levelID ==="easy") {
         str = `
-        <div id="tower" data-nonogram="true" class="button ${themeShema[THEME].button}">Tower</div>
-        <div id="cross" data-nonogram="true" class="button ${themeShema[THEME].button}">Cross</div>
-        <div id="skull" data-nonogram="true" class="button ${themeShema[THEME].button}">Skull</div>
-        <div id="bat" data-nonogram="true" class="button ${themeShema[THEME].button}">Bat</div>
-        <div id="tree" data-nonogram="true" class="button ${themeShema[THEME].button}">Tree</div>
+        <div id="tower" data-nonogram="true" class="button btn">Tower</div>
+        <div id="cross" data-nonogram="true" class="button btn">Cross</div>
+        <div id="skull" data-nonogram="true" class="button btn">Skull</div>
+        <div id="bat" data-nonogram="true" class="button btn">Bat</div>
+        <div id="tree" data-nonogram="true" class="button btn">Tree</div>
         `
     } else if(levelID === "medium") {
         str = `
-        <div id="question" data-nonogram="true" class="button ${themeShema[THEME].button}">Question</div>
-        <div id="snail" data-nonogram="true" class="button ${themeShema[THEME].button}">Snail</div>
-        <div id="music" data-nonogram="true" class="button ${themeShema[THEME].button}">Music</div>
-        <div id="mouse" data-nonogram="true" class="button ${themeShema[THEME].button}">Mouse</div>
-        <div id="cherry" data-nonogram="true" class="button ${themeShema[THEME].button}">Cherry</div>
+        <div id="question" data-nonogram="true" class="button btn">Question</div>
+        <div id="snail" data-nonogram="true" class="button btn">Snail</div>
+        <div id="music" data-nonogram="true" class="button btn">Music</div>
+        <div id="mouse" data-nonogram="true" class="button btn">Mouse</div>
+        <div id="cherry" data-nonogram="true" class="button btn">Cherry</div>
         `
     } else {
         str = `
-        <div id="home" data-nonogram="true" class="button ${themeShema[THEME].button}">Home</div>
-        <div id="clover" data-nonogram="true" class="button ${themeShema[THEME].button}">Clover</div>
-        <div id="spades"  data-nonogram="true" class="button ${themeShema[THEME].button}">Spades</div>
-        <div id="dolphin" data-nonogram="true" class="button ${themeShema[THEME].button}">Dolphin</div>
-        <div id="deer" data-nonogram="true" class="button ${themeShema[THEME].button}">Deer</div>
+        <div id="home" data-nonogram="true" class="button btn">Home</div>
+        <div id="clover" data-nonogram="true" class="button btn">Clover</div>
+        <div id="spades"  data-nonogram="true" class="button btn">Spades</div>
+        <div id="dolphin" data-nonogram="true" class="button btn">Dolphin</div>
+        <div id="deer" data-nonogram="true" class="button btn">Deer</div>
         `
     }
 
     modal.innerHTML = `
-    <div class="modal_inner ${themeShema[THEME].modal}">
+    <div class="modal_inner modal_bg">
     <span>X</span>
     ${str}
     </div>
@@ -160,7 +160,7 @@ export function createModalNonogram(levelID, themeShema, THEME) {
     cross.addEventListener("click", closeModal);
 }
 
-export function createModalWin(themeShema, THEME) {
+export function createModalWin() {
     const modal = document.createElement("DIV");
     modal.classList.add("modal");
     const span = document.querySelector(".time span");
@@ -170,9 +170,9 @@ export function createModalWin(themeShema, THEME) {
     const result = minutes * 60 + seconds;
     const name = localStorage.getItem("modelName");
     modal.innerHTML = `
-    <div class="modal_inner ${themeShema[THEME].modal}">
+    <div class="modal_inner modal_bg">
     <span>X</span>
-    <p class="${themeShema[THEME].textWin}">
+    <p class="text_win">
     Great! You have solved the nonogram <span>${name}</span> in <span>${result}</span> seconds!
     </p>
     </div>
