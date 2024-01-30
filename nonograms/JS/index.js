@@ -1,7 +1,7 @@
 import {createField, fullField, createWrapper, createModalLevel, createModalNonogram} from "./functions/creators.js";
 import {createTheme, setTheme} from "./functions/themes.js";
 import {setLevel, createModel} from "./functions/params.js";
-import {onContextMenu, onClick, reset} from "./functions/events.js";
+import {onContextMenu, onClick, reset, random} from "./functions/events.js";
 import {timer, stopTimer} from "./functions/timers.js";
 import {sound} from "./functions/sounds.js";
 
@@ -18,7 +18,7 @@ function startGame(levelID = "easy", nonogram = "tower"){
     fullField(topNumbers, leftNumbers);
 
     createTheme();
-    sound("./assets/start.mp3");
+    // sound("./assets/start.mp3");
 
     const wrapper = document.querySelector(".wrapper");
     
@@ -62,6 +62,15 @@ function startGame(levelID = "easy", nonogram = "tower"){
         if(event.target.id !== "reset") return;
         event.stopPropagation();
         reset();
+    });
+
+    //random
+    wrapper.addEventListener("click", (event) => {
+        if(event.target.id !== "random") return;
+        event.stopPropagation();
+        stopTimer();
+        const {levelID, name} = random();
+        startGame(levelID, name);
     });
 
     //change theme

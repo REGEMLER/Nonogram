@@ -80,7 +80,7 @@ export function createWrapper() {
     <div class="buttons">
         <div id="new" class="button btn">New game</div>
         <div id="reset" class="button btn">Reset</div>
-        <div class="button btn">Random game</div>
+        <div id="random" class="button btn">Random game</div>
         <div class="button btn">Continue</div>
         <div class="button btn">Solution</div>
         <div class="button btn">Save game</div>

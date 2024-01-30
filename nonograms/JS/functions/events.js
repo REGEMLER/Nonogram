@@ -14,6 +14,22 @@ export function reset() {
     span.textContent = "00:00";
 }
 
+export function random() {
+    const levels = ["easy", "medium", "hard"];
+    const levelID = levels.sort(() => Math.random() - 0.5)[0];
+    localStorage.setItem("levelID", levelID);
+    let nonograms = null;
+    if(levelID === "easy") {
+        nonograms = ["tower", "cross", "skull", "bat", "tree"];
+    } else if (levelID === "medium") {
+        nonograms = ["question", "snail", "music", "mouse", "cherry"];
+    } else {
+        nonograms = ["home", "clover", "spades", "dolphin", "deer"];
+    }
+    const name = nonograms.sort(() => Math.random() - 0.5)[0];
+    return {levelID, name};
+}
+
 export function onContextMenu(event) {
     if(!event.target.dataset.cell || 
         event.target.dataset.cell !== "cell" || 
