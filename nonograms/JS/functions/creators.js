@@ -116,9 +116,6 @@ export function createModalLevel(){
 }
 
 export function createModalNonogram(levelID) {
-    localStorage.setItem("levelID", levelID);
-    const oldModal = document.querySelector(".modal");
-    oldModal.remove();
     const modal = document.createElement("DIV");
     modal.classList.add("modal");
     let str = "";

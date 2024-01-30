@@ -113,28 +113,28 @@ export function createModel(nonogram){
             numbersLeft = towerLeft;    
     }
     localStorage.setItem("modelName", nonogram);
-    setModel(model);
-    setModelTop(numbersTop);
-    setModelLeft(numbersLeft);
+    setModel(model, "model");
+    setModel(numbersTop, "topNumbers");
+    setModel(numbersLeft, "leftNumbers");
 }
 
-function setModel(modelID){
+function setModel(modelID, name){
     const model = modelID;
     const localModele = JSON.stringify(model);
-    localStorage.setItem("model", localModele);
+    localStorage.setItem(name, localModele);
     return model;
 
 }
-function setModelTop(modelID){
-    const model = modelID;
-    const localModele = JSON.stringify(model);
-    localStorage.setItem("topNumbers", localModele);
-    return model;
-}
+// function setModelTop(modelID){
+//     const model = modelID;
+//     const localModele = JSON.stringify(model);
+//     localStorage.setItem("topNumbers", localModele);
+//     return model;
+// }
 
-function setModelLeft(modelID){
-    const model = modelID;
-    const localModele = JSON.stringify(model);
-    localStorage.setItem("leftNumbers", localModele);
-    return model;
-}
+// function setModelLeft(modelID){
+//     const model = modelID;
+//     const localModele = JSON.stringify(model);
+//     localStorage.setItem("leftNumbers", localModele);
+//     return model;
+// }

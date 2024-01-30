@@ -1,15 +1,17 @@
 import {createField, fullField, createWrapper, createModalLevel, createModalNonogram} from "./functions/creators.js";
 import {createTheme, setTheme} from "./functions/themes.js";
 import {setLevel, createModel} from "./functions/params.js";
-import {onContextMenu, onClick, reset, random} from "./functions/events.js";
+import {onContextMenu, onClick, reset, random, sound} from "./functions/events.js";
 import {timer, stopTimer} from "./functions/timers.js";
-import {sound} from "./functions/sounds.js";
+
 
 
 function startGame(levelID = "easy", nonogram = "tower"){
     const level = setLevel(levelID);
     createModel(nonogram);
 
+
+    // Know if i need it, or it is simpler return them from createmodal??????
     const topNumbers = JSON.parse(localStorage.getItem("topNumbers"));
     const leftNumbers = JSON.parse(localStorage.getItem("leftNumbers"));
 
@@ -34,8 +36,8 @@ function startGame(levelID = "easy", nonogram = "tower"){
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "new") return;
         event.stopPropagation();
-        createModalLevel();
         stopTimer();
+        createModalLevel();
     });
 
 
@@ -43,6 +45,9 @@ function startGame(levelID = "easy", nonogram = "tower"){
     document.body.addEventListener("click", (event) => {
         if(event.target.id !== "easy" && event.target.id !== "medium" && event.target.id !== "hard") return;
         event.stopPropagation();
+        const oldModal = document.querySelector(".modal");
+        if(oldModal) oldModal.remove();
+        localStorage.setItem("levelID", event.target.id);
         createModalNonogram(event.target.id);
     });
 
@@ -51,7 +56,7 @@ function startGame(levelID = "easy", nonogram = "tower"){
         if(!event.target.dataset.nonogram) return;
         event.stopPropagation();
         const oldModal = document.querySelector(".modal");
-        oldModal.remove();
+        if(oldModal) oldModal.remove();
         document.body.style.overflowY = "";
         const level = localStorage.getItem("levelID");
         startGame(level, event.target.id);
@@ -70,6 +75,7 @@ function startGame(levelID = "easy", nonogram = "tower"){
         event.stopPropagation();
         stopTimer();
         const {levelID, name} = random();
+        localStorage.setItem("levelID", levelID);
         startGame(levelID, name);
     });
 

@@ -1,6 +1,11 @@
 import {timer, stopTimer} from "./timers.js";
 import {createModalWin} from "./creators.js";
-import {sound} from "./sounds.js";
+
+export function sound(src){
+    const audio = new Audio();
+    audio.src = src;
+    audio.play(); 
+}
 
 export function reset() {
     const cells = [...document.querySelectorAll("[data-cell='cell']")];
@@ -17,7 +22,6 @@ export function reset() {
 export function random() {
     const levels = ["easy", "medium", "hard"];
     const levelID = levels.sort(() => Math.random() - 0.5)[0];
-    localStorage.setItem("levelID", levelID);
     let nonograms = null;
     if(levelID === "easy") {
         nonograms = ["tower", "cross", "skull", "bat", "tree"];
