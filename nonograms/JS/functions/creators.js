@@ -81,10 +81,10 @@ export function createWrapper() {
         <div id="new" class="button btn">New game</div>
         <div id="reset" class="button btn">Reset</div>
         <div id="random" class="button btn">Random game</div>
-        <div class="button btn">Continue</div>
-        <div class="button btn">Solution</div>
-        <div class="button btn">Save game</div>
+        <div id="solution" class="button btn">Solution</div>
         <div class="button btn">Results</div>
+        <div class="button btn">Continue</div>
+        <div class="button btn">Save game</div>
     </div>
     `
     document.body.append(wrapper);

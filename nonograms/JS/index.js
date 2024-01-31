@@ -1,7 +1,7 @@
 import {createField, fullField, createWrapper, createModalLevel, createModalNonogram} from "./functions/creators.js";
 import {createTheme, setTheme} from "./functions/themes.js";
 import {setLevel, createModel} from "./functions/params.js";
-import {onContextMenu, onClick, reset, random, sound} from "./functions/events.js";
+import {onContextMenu, onClick, reset, random, sound, showSolution} from "./functions/events.js";
 import {timer, stopTimer} from "./functions/timers.js";
 
 
@@ -84,6 +84,12 @@ function startGame(levelID = "easy", nonogram = "tower"){
         if(!event.target.classList.contains("theme") &&
         !event.target.parentElement.classList.contains("theme")) return;
         setTheme();
+    });
+
+    //change theme
+    wrapper.addEventListener("click", (event) => {
+        if(event.target.id !== "solution") return;
+        showSolution();
     });
 }
 startGame("easy", "cross");

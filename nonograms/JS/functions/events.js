@@ -1,6 +1,19 @@
 import {timer, stopTimer} from "./timers.js";
 import {createModalWin} from "./creators.js";
 
+export function showSolution() {
+    const cells = [...document.querySelectorAll("[data-cell='cell']")];
+    const model = JSON.parse(localStorage.getItem("model"));
+    cells.forEach((item, index) => {
+        if(model[index]) {
+            item.classList.add(`cell_click`);
+        } else {
+            item.classList.remove(`cell_click`);
+        }
+    });
+    stopTimer();
+}
+
 export function sound(src){
     const audio = new Audio();
     audio.src = src;
