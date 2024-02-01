@@ -123,18 +123,4 @@ function setModel(modelID, name){
     const localModele = JSON.stringify(model);
     localStorage.setItem(name, localModele);
     return model;
-
 }
-// function setModelTop(modelID){
-//     const model = modelID;
-//     const localModele = JSON.stringify(model);
-//     localStorage.setItem("topNumbers", localModele);
-//     return model;
-// }
-
-// function setModelLeft(modelID){
-//     const model = modelID;
-//     const localModele = JSON.stringify(model);
-//     localStorage.setItem("leftNumbers", localModele);
-//     return model;
-// }

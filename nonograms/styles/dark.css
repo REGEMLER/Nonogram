@@ -37,3 +37,9 @@
     font-size: 1.2rem;
     color: var(--BTN);
 }
+
+.list_item {
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: var(--BTN);
+}

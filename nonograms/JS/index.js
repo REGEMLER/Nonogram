@@ -3,12 +3,14 @@ import {createTheme, setTheme} from "./functions/themes.js";
 import {setLevel, createModel} from "./functions/params.js";
 import {onContextMenu, onClick, reset, random, sound, showSolution} from "./functions/events.js";
 import {timer, stopTimer} from "./functions/timers.js";
+import {getResults} from "./functions/results.js";
 
 
 
 function startGame(levelID = "easy", nonogram = "tower"){
     const level = setLevel(levelID);
     createModel(nonogram);
+    localStorage.setItem("levelID", levelID);
 
 
     // Know if i need it, or it is simpler return them from createmodal??????
@@ -86,10 +88,16 @@ function startGame(levelID = "easy", nonogram = "tower"){
         setTheme();
     });
 
-    //change theme
+    //show solution
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "solution") return;
         showSolution();
+    });
+
+    //show results
+    wrapper.addEventListener("click", (event) => {
+        if(event.target.id !== "results") return;
+        getResults()
     });
 }
 startGame("easy", "cross");

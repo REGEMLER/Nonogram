@@ -1,5 +1,6 @@
 import {timer, stopTimer} from "./timers.js";
 import {createModalWin} from "./creators.js";
+import {setResults} from "./results.js";
 
 export function showSolution() {
     const cells = [...document.querySelectorAll("[data-cell='cell']")];
@@ -98,5 +99,6 @@ function counter() {
 function win(){
     stopTimer();
     createModalWin();
+    setResults();
     sound("./assets/win.mp3");
 }

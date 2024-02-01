@@ -1,5 +1,3 @@
-import {timer, stopTimer} from "./timers.js";
-
 export function createField(numberHelpers, size) {
     const field = document.querySelector(".field");
     for(let i = 0; i < size; i++) {
@@ -82,20 +80,19 @@ export function createWrapper() {
         <div id="reset" class="button btn">Reset</div>
         <div id="random" class="button btn">Random game</div>
         <div id="solution" class="button btn">Solution</div>
-        <div class="button btn">Results</div>
-        <div class="button btn">Continue</div>
-        <div class="button btn">Save game</div>
+        <div id="results" class="button btn">Results</div>
+        <div id="load" class="button btn">Load game</div>
+        <div id="save" class="button btn">Save game</div>
     </div>
     `
     document.body.append(wrapper);
 }
 
-function closeModal(event) {
+export function closeModal(event) {
     event.stopPropagation()
     const modal = document.querySelector(".modal");
     modal.remove();
     document.body.style.overflowY = "";
-    timer();
 }
 
 export function createModalLevel(){
@@ -103,7 +100,7 @@ export function createModalLevel(){
     modal.classList.add("modal");
     modal.innerHTML = `
     <div class="modal_inner modal_bg">
-    <span>X</span>
+    <span class="X">X</span>
     <div id="easy" class="button btn">Easy</div>
     <div id="medium" class="button btn">Medium</div>
     <div id="hard" class="button btn">Hard</div>
@@ -147,7 +144,7 @@ export function createModalNonogram(levelID) {
 
     modal.innerHTML = `
     <div class="modal_inner modal_bg">
-    <span>X</span>
+    <span class="X">X</span>
     ${str}
     </div>
     `
@@ -168,7 +165,7 @@ export function createModalWin() {
     const name = localStorage.getItem("modelName");
     modal.innerHTML = `
     <div class="modal_inner modal_bg">
-    <span>X</span>
+    <span class="X">X</span>
     <p class="text_win">
     Great! You have solved the nonogram <span>${name}</span> in <span>${result}</span> seconds!
     </p>
@@ -176,10 +173,5 @@ export function createModalWin() {
     `
     document.body.append(modal);
     document.body.style.overflowY = "hidden";
-    modal.addEventListener("click", (event)=> {
-        event.stopPropagation()
-        const modal = document.querySelector(".modal");
-        modal.remove();
-        document.body.style.overflowY = "";
-    });
+    modal.addEventListener("click", closeModal);
 }
