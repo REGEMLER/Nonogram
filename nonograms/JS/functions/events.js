@@ -11,6 +11,7 @@ export function showSolution() {
         } else {
             item.classList.remove(`cell_click`);
         }
+        item.textContent = "";
     });
 }
 
@@ -24,6 +25,7 @@ export function reset() {
     const cells = [...document.querySelectorAll("[data-cell='cell']")];
     cells.forEach(item => {
         item.classList.remove(`cell_click`);
+        item.textContent = "";
     })
     const counterElement = document.getElementById("counter");
     counterElement.textContent = 0;
@@ -65,7 +67,10 @@ export function onContextMenu(event) {
 export function onClick(event) {
     if(checkWin()) return;
     const clicks = document.getElementById("counter").textContent;
-    if(clicks === "0") timer();
+    if(clicks === "0") {
+        sound("./assets/start.mp3");
+        timer();
+    }
     event.target.textContent = "";
     counter();
     sound("./assets/click.mp3");

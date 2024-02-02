@@ -2,28 +2,26 @@ import {createField, fullField, createWrapper, createModalLevel, createModalNono
 import {createTheme, setTheme} from "./functions/themes.js";
 import {setLevel, createModel} from "./functions/params.js";
 import {onContextMenu, onClick, reset, random, sound, showSolution} from "./functions/events.js";
-import {timer, stopTimer} from "./functions/timers.js";
+import {stopTimer} from "./functions/timers.js";
 import {getResults} from "./functions/results.js";
 import {save, load} from "./functions/save.js";
 
 
 
 function startGame(levelID = "easy", nonogram = "tower"){
+    stopTimer();
     const level = setLevel(levelID);
-    createModel(nonogram);
+    const clues = createModel(nonogram);
     localStorage.setItem("levelID", levelID);
 
-
-    // Know if i need it, or it is simpler return them from createmodal??????
-    const topNumbers = JSON.parse(localStorage.getItem("topNumbers"));
-    const leftNumbers = JSON.parse(localStorage.getItem("leftNumbers"));
+    const topNumbers = clues[0];
+    const leftNumbers = clues[1];
 
     createWrapper();
     createField(topNumbers.length / level, topNumbers.length / level + level);
     fullField(topNumbers, leftNumbers);
 
     createTheme();
-    // sound("./assets/start.mp3");
 
     const wrapper = document.querySelector(".wrapper");
     
@@ -32,15 +30,15 @@ function startGame(levelID = "easy", nonogram = "tower"){
     //game process
     wrapper.addEventListener("click", (event) => {
         if(!event.target.dataset.cell || event.target.dataset.cell !== "cell") return;
-        onClick(event)
+        onClick(event);
     });
 
     //start new game
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "new") return;
         event.stopPropagation();
-        stopTimer();
         createModalLevel();
+        sound("./assets/btn.mp3");
     });
 
 
@@ -52,6 +50,7 @@ function startGame(levelID = "easy", nonogram = "tower"){
         if(oldModal) oldModal.remove();
         localStorage.setItem("levelID", event.target.id);
         createModalNonogram(event.target.id);
+        sound("./assets/btn.mp3");
     });
 
     //select picture and start new game
@@ -62,6 +61,7 @@ function startGame(levelID = "easy", nonogram = "tower"){
         if(oldModal) oldModal.remove();
         document.body.style.overflowY = "";
         const level = localStorage.getItem("levelID");
+        sound("./assets/btn.mp3");
         startGame(level, event.target.id);
     });
 
@@ -69,6 +69,7 @@ function startGame(levelID = "easy", nonogram = "tower"){
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "reset") return;
         event.stopPropagation();
+        sound("./assets/btn.mp3");
         reset();
     });
 
@@ -76,9 +77,9 @@ function startGame(levelID = "easy", nonogram = "tower"){
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "random") return;
         event.stopPropagation();
-        stopTimer();
         const {levelID, name} = random();
         localStorage.setItem("levelID", levelID);
+        sound("./assets/btn.mp3");
         startGame(levelID, name);
     });
 
@@ -86,12 +87,14 @@ function startGame(levelID = "easy", nonogram = "tower"){
     wrapper.addEventListener("click", (event) => {
         if(!event.target.classList.contains("theme") &&
         !event.target.parentElement.classList.contains("theme")) return;
+        sound("./assets/light.mp3");
         setTheme();
     });
 
     //show solution
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "solution") return;
+        sound("./assets/sad.mp3");
         showSolution();
         stopTimer();
     });
@@ -99,19 +102,23 @@ function startGame(levelID = "easy", nonogram = "tower"){
     //show results
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "results") return;
+        sound("./assets/fin.mp3");
         getResults()
     });
 
     //save game
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "save") return;
+        sound("./assets/btn.mp3");
         save();
     });
 
     //load game
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "load") return;
+        sound("./assets/btn.mp3");
         load();
     });
 }
 startGame("easy", "cross");
+

@@ -1,3 +1,5 @@
+import {sound} from "./events.js";
+
 export function createField(numberHelpers, size) {
     const field = document.querySelector(".field");
     for(let i = 0; i < size; i++) {
@@ -89,10 +91,11 @@ export function createWrapper() {
 }
 
 export function closeModal(event) {
-    event.stopPropagation()
+    event.stopPropagation();
     const modal = document.querySelector(".modal");
     modal.remove();
     document.body.style.overflowY = "";
+    sound("./assets/X.mp3");
 }
 
 export function createModalLevel(){
@@ -108,7 +111,7 @@ export function createModalLevel(){
     `
     document.body.append(modal);
     document.body.style.overflowY = "hidden";
-    const cross = modal.querySelector("span");
+    const cross = modal.querySelector(".X");
     cross.addEventListener("click", closeModal);
 }
 
@@ -150,7 +153,7 @@ export function createModalNonogram(levelID) {
     `
     document.body.append(modal);
     document.body.style.overflowY = "hidden";
-    const cross = modal.querySelector("span");
+    const cross = modal.querySelector(".X");
     cross.addEventListener("click", closeModal);
 }
 

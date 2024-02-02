@@ -54,5 +54,5 @@ export function setResults() {
         resultsSorted.pop();
     }
     const resultsJSON = JSON.stringify(resultsSorted);
-    localStorage.setItem("results", resultsJSON)
+    localStorage.setItem("results", resultsJSON);
 }

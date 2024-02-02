@@ -113,14 +113,7 @@ export function createModel(nonogram){
             numbersLeft = towerLeft;    
     }
     localStorage.setItem("modelName", nonogram);
-    setModel(model, "model");
-    setModel(numbersTop, "topNumbers");
-    setModel(numbersLeft, "leftNumbers");
-}
+    localStorage.setItem("model", JSON.stringify(model));
 
-function setModel(modelID, name){
-    const model = modelID;
-    const localModele = JSON.stringify(model);
-    localStorage.setItem(name, localModele);
-    return model;
+    return [numbersTop, numbersLeft];
 }
