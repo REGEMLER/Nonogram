@@ -12,7 +12,6 @@ export function showSolution() {
             item.classList.remove(`cell_click`);
         }
     });
-    stopTimer();
 }
 
 export function sound(src){

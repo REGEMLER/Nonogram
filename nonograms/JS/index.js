@@ -4,6 +4,7 @@ import {setLevel, createModel} from "./functions/params.js";
 import {onContextMenu, onClick, reset, random, sound, showSolution} from "./functions/events.js";
 import {timer, stopTimer} from "./functions/timers.js";
 import {getResults} from "./functions/results.js";
+import {save, load} from "./functions/save.js";
 
 
 
@@ -92,12 +93,25 @@ function startGame(levelID = "easy", nonogram = "tower"){
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "solution") return;
         showSolution();
+        stopTimer();
     });
 
     //show results
     wrapper.addEventListener("click", (event) => {
         if(event.target.id !== "results") return;
         getResults()
+    });
+
+    //save game
+    wrapper.addEventListener("click", (event) => {
+        if(event.target.id !== "save") return;
+        save();
+    });
+
+    //load game
+    wrapper.addEventListener("click", (event) => {
+        if(event.target.id !== "load") return;
+        load();
     });
 }
 startGame("easy", "cross");
