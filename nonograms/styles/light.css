@@ -29,6 +29,10 @@
     background-color: var(--Secondary);
 }
 
+.clue_color {
+    color: black;
+}
+
 .modal_bg {
     background-color: var(--Secondary);
 }

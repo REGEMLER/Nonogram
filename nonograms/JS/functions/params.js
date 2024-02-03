@@ -114,6 +114,7 @@ export function createModel(nonogram){
     }
     localStorage.setItem("modelName", nonogram);
     localStorage.setItem("model", JSON.stringify(model));
+    console.log(`The model of the nonogram. ${model}`);
 
     return [numbersTop, numbersLeft];
 }

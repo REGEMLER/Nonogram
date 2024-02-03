@@ -31,13 +31,13 @@ export function createField(numberHelpers, size) {
             if (i > numberHelpers - 1 && j <= numberHelpers - 1 ) {
                 cell.dataset.cell = "left";
                 cell.classList.add("clue");
-                cell.classList.add(`text`);
+                cell.classList.add(`clue_color`);
                 cell.classList.add(`clue_bg`);
             } 
             if (i <= numberHelpers - 1  && j > numberHelpers - 1 ) {
                 cell.dataset.cell = "top";
                 cell.classList.add("clue");
-                cell.classList.add(`text`);
+                cell.classList.add(`clue_color`);
                 cell.classList.add(`clue_bg`);
             } 
             if (i <= numberHelpers - 1 && j <= numberHelpers - 1) {

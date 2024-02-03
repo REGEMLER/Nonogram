@@ -18,15 +18,19 @@
 }
 
 .bg_cell {
-    background-color: black;
+    background-color: rgb(236, 234, 230);
 }
 
 .cell_click {
-    background-color: white;
+    background-color: rgb(116, 73, 43);
 }
 
 .clue_bg {
     background-color: var(--Secondary);
+}
+
+.clue_color {
+    color: var(--BTN);
 }
 
 .modal_bg {
