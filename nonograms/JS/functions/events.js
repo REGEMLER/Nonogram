@@ -50,9 +50,7 @@ export function random() {
 }
 
 export function onContextMenu(event) {
-    if(!event.target.dataset.cell || 
-        event.target.dataset.cell !== "cell" || 
-        event.target.classList.contains("cell_click")) return;
+    if(!event.target.dataset.cell || event.target.dataset.cell !== "cell") return;
 
     event.preventDefault();    
     sound("./assets/flag.mp3");
@@ -62,6 +60,7 @@ export function onContextMenu(event) {
     } else {
         event.target.textContent = "X";
     }
+    event.target.classList.remove("cell_click");
 }
 
 export function onClick(event) {
